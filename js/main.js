@@ -38,7 +38,7 @@ changeText();
 setInterval(changeText ,3000);
 
 
-////////////Circle
+// ////////////Circle
 
 const circle=document.querySelectorAll('.circle');
 circle.forEach(elem=>{
@@ -58,3 +58,116 @@ circle.forEach(elem=>{
         pointsMarked[i].classList.add('marked')
     }
 })
+
+/////Active Menu
+
+// Selecionar os elementos do menu e seções
+const menuLinks = document.querySelectorAll('header ul li a');
+const sections = document.querySelectorAll('section');
+
+// Função para verificar qual seção está visível e atualizar o menu
+function updateActiveMenu() {
+  const scrollY = window.scrollY;
+
+  // Iterar pelas seções para encontrar a seção visível atual
+  sections.forEach((section, index) => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.clientHeight;
+
+    if (scrollY >= sectionTop - 97 && scrollY < sectionBottom) {
+      // Remova a classe 'active' de todos os itens do menu e adicione à seção atual
+      menuLinks.forEach(item => item.classList.remove('active'));
+      menuLinks[index].classList.add('active');
+    }
+  });
+}
+
+// Chame a função para definir o estado inicial do menu
+updateActiveMenu();
+
+// Adicione um ouvinte de evento de rolagem para atualizar o menu durante a rolagem
+window.addEventListener('scroll', updateActiveMenu);
+
+
+// sticky navbar
+
+const header = document.querySelector("header");
+window.addEventListener("scroll",function(){
+    header.classList.toggle("sticky",this.window.scrollY > 50)
+})
+
+
+
+///////Selecionar elementos do DOM
+const menuIcon = document.querySelector("#menu-icons");
+const navList = document.querySelector(".navlist");
+const navLinks = document.querySelectorAll(".navlist a");
+
+// Função para alternar o ícone do menu e mostrar/ocultar a lista de navegação
+function toggleNav() {
+    menuIcon.classList.toggle("bx-x");
+    navList.classList.toggle("open");
+}
+
+// Adicionar evento de clique ao ícone do menu
+menuIcon.addEventListener("click", toggleNav);
+
+// Adicionar evento de clique aos links de navegação para fechar o menu
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        menuIcon.classList.remove("bx-x");
+        navList.classList.remove("open");
+    });
+});
+
+// Fechar o menu quando ocorre um clique em qualquer lugar da janela
+window.addEventListener("click", (event) => {
+    if (!menuIcon.contains(event.target) && !navList.contains(event.target)) {
+        menuIcon.classList.remove("bx-x");
+        navList.classList.remove("open");
+    }
+});
+
+// Impedir o evento de clique no menu de propagar para a janela
+menuIcon.addEventListener("click", (event) => {
+    event.stopPropagation();
+});
+
+// Fechar o menu quando a janela é redimensionada
+window.addEventListener("resize", () => {
+    menuIcon.classList.remove("bx-x");
+    navList.classList.remove("open");
+});
+
+// parallax
+
+// Função para adicionar ou remover a classe "show-items" com base na interseção
+const handleIntersection = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show-items");
+        } else {
+            entry.target.classList.remove("show-items");
+        }
+    });
+};
+
+// Opções para o IntersectionObserver
+const options = {
+    root: null, // O elemento de observação é o viewport
+    rootMargin: "100px", // Sem margem adicional
+    threshold: 0.3, // 50% de interseção necessária para ativar a classe
+};
+
+// Criar uma única instância do IntersectionObserver
+const observer = new IntersectionObserver(handleIntersection, options);
+
+// Selecionar todos os elementos que você deseja observar
+const elementsToObserve = document.querySelectorAll(".scroll-scale, .scroll-bottom, .scroll-top");
+
+// Observar todos os elementos selecionados
+elementsToObserve.forEach((element) => {
+    observer.observe(element);
+});
+
+
