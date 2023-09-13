@@ -141,31 +141,22 @@ window.addEventListener("resize", () => {
 
 // parallax
 
-// Função para adicionar ou remover a classe "show-items" com base na interseção
 const handleIntersection = (entries, observer) => {
     entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show-items");
-        } else {
-            entry.target.classList.remove("show-items");
-        }
+        entry.target.classList.toggle("show-items", entry.isIntersecting);
     });
 };
 
-// Opções para o IntersectionObserver
 const options = {
-    root: null, // O elemento de observação é o viewport
-    rootMargin: "100px", // Sem margem adicional
-    threshold: 0.3, // 50% de interseção necessária para ativar a classe
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5,
 };
 
-// Criar uma única instância do IntersectionObserver
 const observer = new IntersectionObserver(handleIntersection, options);
 
-// Selecionar todos os elementos que você deseja observar
 const elementsToObserve = document.querySelectorAll(".scroll-scale, .scroll-bottom, .scroll-top");
 
-// Observar todos os elementos selecionados
 elementsToObserve.forEach((element) => {
     observer.observe(element);
 });

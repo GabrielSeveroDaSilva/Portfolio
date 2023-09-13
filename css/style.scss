@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 $Poppins: "Poppins", sans-serif;
+@import "loading";
+$lite: #333 !important;
+$size: 48px;
 
 * {
     padding: 0;
@@ -11,47 +14,110 @@ $Poppins: "Poppins", sans-serif;
 }
 
 :root {
-    --text-color: #000;
-    --text-color-sec: #000;
-    --hover-color: #ffe712;
-    --bg-color: rgb(197, 197, 197);
-    --secon-bg-color: #333;
+    --blue: #001847 !important;
+    --text-color: #000000 !important;
+    --text-color-sec: #2d2d2d !important;
+    --hover-color: #3498db !important;
+    --yellow: #ffe615 !important;
+    --bg-color: #ffffff !important;
+    --secon-bg-color: #cfcfcf !important;
     --big-font: 2.5rem;
     --normal-font: 2rem;
-    --neon-box-shadow: 0 0 0.5rem #ffe712;
+    --neon-box-shadow: 0 0 0.5rem #0099ff;
     --h2-font: 3rem;
-    --font-neon-text-shadow: 
-    0 0 10px rgba(255, 219, 18, 0.3),
-    0 0 20px rgba(255, 219, 18, 0.3),
-    0 0 30px rgba(255, 219, 18, 0.3),
-    0 0 40px rgba(255, 219, 18, 0.3),
-    0 0 70px rgba(255, 219, 18, 0.3),
-    0 0 80px rgba(255, 219, 18, 0.3),
-    0 0 100px rgba(255, 219, 18, 0.3),
-    0 0 150px rgba(255, 219, 18, 0.3);
+    --font-neon-text-shadow: 0 0 10px rgba(18, 227, 255, 0.3), 0 0 20px rgba(18, 227, 255, 0.3),
+        0 0 30px rgba(18, 227, 255, 0.3), 0 0 40px rgba(18, 227, 255, 0.3), 0 0 70px rgba(18, 227, 255, 0.3),
+        0 0 80px rgba(18, 227, 255, 0.3), 0 0 100px rgba(18, 227, 255, 0.3), 0 0 150px rgba(18, 227, 255, 0.3);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     height: 0;
-    width: .5rem;
+    width: 0.5rem;
 }
 
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
     background: var(--secon-bg-color);
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background: var(--hover-color);
     border-radius: 5rem;
-
 }
 
+html {
+    box-sizing: border-box;
+}
 
 body {
     font-family: $Poppins;
     background-color: var(--bg-color);
     color: var(--text-color);
+    overflow-x: hidden;
+    width: 100vw;
 }
+
+// Loading
+.loading{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    background: var(--bg-color);
+
+    .load {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /*change these sizes to fit into your project*/
+        width: 100px;
+        height: 100px;
+
+    }
+    .load hr {
+        border: 0;
+        margin: 0;
+        width: 40%;
+        height: 40%;
+        position: absolute;
+        border-radius: 50%;
+        animation: spinner 2s ease infinite;
+
+    }
+    
+    .load :first-child {
+        background: #19a68c;
+        animation-delay: -1.5s;
+    }
+    .load :nth-child(2) {
+        background: #f63d3a;
+        animation-delay: -1s;
+    }
+    .load :nth-child(3) {
+        background: #fda543;
+        animation-delay: -0.5s;
+    }
+    .load :last-child {
+        background: #193b48;
+    }
+    
+    @keyframes spinner {
+        0%, 100% {
+            transform: translate(0);
+        }
+        25% {
+            transform: translate(160%, 0);
+        }
+        50% {
+            transform: translate(160%, 160%);
+        }
+        75% {
+            transform: translate(0, 160%);
+        }
+    }
+}
+
+
 
 // Header Section Start
 
@@ -74,12 +140,11 @@ header {
         letter-spacing: 1px;
     }
 
-    &.sticky{
+    &.sticky {
         background: var(--bg-color);
         border-bottom: 1px solid var(--secon-bg-color);
         padding: 12px 10%;
     }
-
 
     .navlist {
         display: flex;
@@ -88,32 +153,25 @@ header {
             color: var(--text-color);
             font-weight: 500;
             padding: 10px 20px;
-            
+
             &:hover {
                 color: var(--hover-color);
-                text-shadow: 
-                0 0 10px rgba(255, 219, 18, 0.6),
-                0 0 20px rgba(255, 219, 18, 0.6),
-                0 0 30px rgba(255, 219, 18, 0.6),
-                0 0 40px rgba(255, 219, 18, 0.6),
-                0 0 70px rgba(255, 219, 18, 0.6),
-                0 0 80px rgba(255, 219, 18, 0.6),
-                0 0 100px rgba(255, 219, 18, 06),
-                0 0 150px rgba(255, 219, 18, 06);
+                text-shadow: 0 0 10px rgba(18, 227, 255, 0.6), 0 0 20px rgba(18, 227, 255, 0.6),
+                    0 0 30px rgba(18, 227, 255, 0.6), 0 0 40px rgba(18, 227, 255, 0.6), 0 0 70px rgba(18, 227, 255, 0.6),
+                    0 0 80px rgba(18, 227, 255, 0.6), 0 0 100px rgba(18, 227, 255, 0.6),
+                    0 0 150px rgba(18, 227, 255, 0.6);
             }
 
-            &.active{
+            &.active {
                 color: var(--hover-color);
             }
         }
     }
-
-    
 }
 
 #menu-icons {
     font-size: 1.8rem;
-    z-index: 10001;
+    z-index: 9999;
     cursor: pointer;
     margin-left: 25px;
     background: var(--hover-color);
@@ -150,6 +208,7 @@ span {
         position: relative;
         overflow: hidden;
         z-index: 1;
+        border: none;
 
         &:hover {
             color: var(--hover-color);
@@ -189,8 +248,6 @@ span {
 section {
     padding: 100px 10%;
 }
-
-
 
 // Home Section Start
 
@@ -286,7 +343,7 @@ section {
                 color: var(--hover-color);
                 border: 2px solid var(--hover-color);
                 transition: 0.6s;
-                box-shadow: 0 0 0.3rem #ffe712;
+                box-shadow: 0 0 0.3rem #0099ff;
                 border-radius: 5px;
                 position: relative;
                 z-index: 1;
@@ -399,7 +456,7 @@ section {
     width: 100%;
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--hover-color);
+    color: var(--text-color-sec);
 
     h2 {
         font-weight: 700;
@@ -409,7 +466,7 @@ section {
     span {
         color: var(--text-color);
         font-size: 0.8rem;
-        font-weight: 200;
+        font-weight: 300;
         letter-spacing: 2px;
         text-transform: uppercase;
     }
@@ -427,22 +484,17 @@ section {
         padding: 2rem 1rem 2rem;
         text-align: center;
         background: var(--secon-bg-color);
-        transition: transform .4s;
+        transition: transform 0.4s;
         border-radius: 10px;
-        
     }
 }
 
 .service-btn {
     width: auto;
     justify-content: center;
-    
 }
 
-
-
-
-.service-icon{
+.service-icon {
     border: 2px solid var(--hover-color);
     padding: 2rem;
     background: var(--bg-color);
@@ -453,24 +505,23 @@ section {
     position: relative;
     color: var(--hover-color);
     box-shadow: var(--neon-box-shadow);
-    
 }
 
-.service-box{
-    h3{
+.service-box {
+    h3 {
         margin-top: 10px;
         font-size: 1.5rem;
     }
 
-    p{
-        margin: .5rem 0 1.5rem 0;
+    p {
+        margin: 0.5rem 0 1.5rem 0;
         font-weight: 300;
         letter-spacing: 1px;
         color: var(--text-color-sec);
         line-height: 1.6;
     }
-    &:hover{
-        transform: translateY(-.7rem);
+    &:hover {
+        transform: translateY(-0.7rem);
     }
 }
 
@@ -605,34 +656,34 @@ section {
 
 // Portfolio Section Start
 
-.fillter-buttons{
+.fillter-buttons {
     margin: 2rem;
     text-align: center;
 
-    .btn{
+    .btn {
         background: none;
         outline: none;
-        border:none;
+        border: none;
         cursor: pointer;
-        font-size: .85rem;
+        font-size: 0.85rem;
         font-weight: 600;
-        letter-spacing: .4px;
+        letter-spacing: 0.4px;
         margin-left: 1.3rem;
         color: var(--text-color);
 
-        &:hover{
+        &:hover {
             color: var(--hover-color);
         }
     }
 }
 
-.portfolio-gallery{
+.portfolio-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-.port-box{
+.port-box {
     border-radius: 15px;
     overflow: hidden;
     background: #292e33;
@@ -642,41 +693,40 @@ section {
     border: 2px solid var(--hover-color);
     box-shadow: var(--neon-box-shadow);
     position: relative;
-
 }
 
-.port-image{
+.port-image {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 100%;
 
-    img{
+    img {
         width: 100%;
-        opacity: .5s;
+        opacity: 0.5s;
         height: 100%;
-        transition: .5s;
+        transition: 0.5s;
     }
-    
 }
 
-.port-box:hover .port-content{
+.port-box:hover .port-content {
     opacity: 1;
 }
 
-.port-box:hover .port-image img{
+.port-box:hover .port-image img {
     transform: scale(1.1);
 }
 
-.port-content{
+.port-content {
     position: absolute;
     bottom: 0;
+    color: var(--bg-color);
     left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: linear-gradient(rgba(0,0,0,.2),#ffe712);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), #0099ff);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -685,64 +735,64 @@ section {
     transition: 0.5s;
     padding: 0 2rem;
 
-    h3{
+    h3 {
         font-size: 1.5rem;
         font-weight: 600;
     }
 
-    p{
-        font-size: .8rem;
+    p {
+        font-size: 0.8rem;
         margin: 5px 0 15px 0;
     }
 
-    a{
-        background: #fff;
+    a {
+        background: var(--text-color-sec);
         border-radius: 50%;
         display: inline-flex;
-        justify-content:center ;
+        justify-content: center;
         align-items: center;
         width: 50px;
         height: 50px;
         border: 1px solid var(--hover-color);
-        outline: 2px solid #fff;
+        outline: 2px solid var(--text-color-sec);
 
-        i{
+        i {
             font-size: 1.3rem;
             color: var(--secon-bg-color);
         }
     }
-
 }
 
 /// Contact Section Start
 
-.contant{
+.contant {
     background: var(--secon-bg-color);
     width: 100%;
 
-    form{
+    form {
         text-align: center;
         max-width: 50rem;
         margin: 1rem auto;
         margin-bottom: 3rem;
 
-        input,textarea{
+        input,
+        textarea {
             width: 100%;
             color: var(--text-color);
             background: var(--bg-color);
-            margin-bottom: .8rem;
+            margin-bottom: 0.8rem;
             border: none;
             border-radius: 5px;
-            padding: .7rem;
+            padding: 0.7rem;
         }
 
-        textarea{
+        textarea {
             resize: none;
         }
     }
 }
 
-.formBtn{
+.formBtn {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -750,69 +800,49 @@ section {
 
 // Footer Section Start
 
-footer{
+footer {
     padding: 1.5rem 10%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    p{
+
+    p {
         display: inline-flex;
         justify-content: center;
         color: var(--text-color);
     }
 
-    a{
+    a {
         font-size: 1rem;
         color: var(--secon-bg-color);
         background: var(--hover-color);
-        padding: .6rem;
+        padding: 0.6rem;
         border-radius: 5px;
     }
 }
 
-/* Estilos do cursor de inserção */
-.insertion-cursor {
-    width: 2px;
-    height: 1em; /* Altura semelhante à altura da fonte */
-    background-color: #000; /* Cor do cursor */
-    position: relative;
-    animation: blink 1s infinite; /* Animação de piscar */
-}
-
-@keyframes blink {
-    0%, 100% {
-        opacity: 0; /* Comece invisível */
-    }
-    50% {
-        opacity: 1; /* Fique visível */
-    }
-}
-
-
-.scroll-scale{
+.scroll-scale {
     opacity: 0;
-    transform: scale(.9);
+    transform: scale(0.9);
     transition: all 2s;
 }
 
-.scroll-bottom{
+.scroll-bottom {
     opacity: 0;
-    transform: translateY(300px);
+    transform: translateY(200px);
     transition: 2s;
 }
 
-.scroll-top{
+.scroll-top {
     opacity: 0;
     transform: translateY(-300px);
     transition: 2s;
 }
 
-.show-items{
+.show-items {
     opacity: 1;
     transform: translateX(0);
 }
-
 
 // keyframes
 
@@ -869,57 +899,54 @@ footer{
     }
 }
 
-@media(max-width:991px){
-
-    :root{
+@media (max-width: 991px) {
+    :root {
         --big-font: 2.2rem;
         --normal-font: 1.8rem;
-        --neon-box-shadow: 0 0 .8rem #ffe712;
-        --h2-font:3rem;
+        --neon-box-shadow: 0 0 0.8rem #0099ff;
+        --h2-font: 3rem;
     }
 
     header,
-    header.sticky{
+    header.sticky {
         padding: 15px 5%;
     }
 
-    footer{
+    footer {
         padding: 15px 5%;
     }
 
-    section{
+    section {
         padding: 50px 5%;
     }
 
-    .navlist a{
+    .navlist a {
         padding: 8px 15px;
     }
 
-    .home-content{
+    .home-content {
         margin-top: 5rem;
     }
 
-    .social-icon{
+    .social-icon {
         margin-top: 2rem;
     }
 }
-@media(max-width:768px){
-
-    #menu-icons{
+@media (max-width: 768px) {
+    #menu-icons {
         display: block;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
     }
 
-    #menu-icons.bx-x{
+    #menu-icons.bx-x {
         transform: rotate(-180deg);
     }
 
-    .home-content{
+    .home-content {
         margin-top: 0;
     }
 
-    .navlist{
-
+    .navlist {
         display: flex;
         position: absolute;
         top: -1000px;
@@ -929,55 +956,53 @@ footer{
         background: var(--bg-color);
         text-align: left;
         padding: 0 5%;
-        transition: all .45s ease;
+        transition: all 0.45s ease;
 
-        &.open{
+        &.open {
             top: 100%;
         }
-        a{
+        a {
             display: block;
             padding-bottom: 1rem;
             font-size: 1rem;
         }
     }
 
-    .home{
+    .home {
         grid-template-columns: 1fr;
 
-        .home-image{
+        .home-image {
             display: none;
         }
     }
 
-    .about{
+    .about {
         flex-direction: column-reverse;
         height: 400px;
 
-
-        .img-about{
+        .img-about {
             display: none;
         }
     }
 
-    .skill-main{
+    .skill-main {
         grid-template-columns: 1fr !important;
     }
 
-    .fillter-buttons{
+    .fillter-buttons {
         margin: 2.5rem 0;
     }
-    footer p{
-        font-size: .9rem;
+    footer p {
+        font-size: 0.9rem;
     }
-
 }
 
-@media(max-width:460px){
-    html{
+@media (max-width: 460px) {
+    html {
         font-size: 80%;
     }
 
-    footer p{
-        font-size: .6rem;
+    footer p {
+        font-size: 0.6rem;
     }
 }
