@@ -549,7 +549,7 @@ section {
         grid-row-gap: 30px;
         grid-column-gap: 50px;
 
-        h3{
+        h3 {
             font-weight: 500;
             font-size: 1.5rem;
             color: var(--hover-color);
@@ -775,7 +775,7 @@ section {
     }
 
     p {
-        font-size: 1rem;
+        font-size: .9rem;
         margin: 5px 0 15px 0;
     }
 
@@ -935,8 +935,15 @@ footer {
     }
     .linguagens-gallery {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
-        }
+    }
+
+    .port-content p{
+        font-size: .7rem;
+    }
+    .port-content .ling {
+        text-align: center;
+        width: 100%;
+    }
 }
 @media (max-width: 768px) {
     #menu-icons {
@@ -1011,6 +1018,4 @@ footer {
     footer p {
         font-size: 0.6rem;
     }
-
-    
 }
