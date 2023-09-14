@@ -444,6 +444,7 @@ section {
             color: var(--text-color);
             font-weight: 300;
             margin: 10px 0;
+            text-align: justify;
             margin-bottom: 1.8rem;
         }
     }
@@ -932,6 +933,10 @@ footer {
     .social-icon {
         margin-top: 2rem;
     }
+    .linguagens-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+        }
 }
 @media (max-width: 768px) {
     #menu-icons {
@@ -1006,4 +1011,6 @@ footer {
     footer p {
         font-size: 0.6rem;
     }
+
+    
 }
