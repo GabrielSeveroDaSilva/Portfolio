@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "ling";
 $Poppins: "Poppins", sans-serif;
-@import "loading";
 $lite: #333 !important;
 $size: 48px;
 
@@ -57,7 +57,7 @@ body {
 }
 
 // Loading
-.loading{
+.loading {
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -72,7 +72,6 @@ body {
         /*change these sizes to fit into your project*/
         width: 100px;
         height: 100px;
-
     }
     .load hr {
         border: 0;
@@ -82,27 +81,27 @@ body {
         position: absolute;
         border-radius: 50%;
         animation: spinner 2s ease infinite;
-
     }
-    
+
     .load :first-child {
-        background: #19a68c;
+        background: var(--blue);
         animation-delay: -1.5s;
     }
     .load :nth-child(2) {
-        background: #f63d3a;
+        background: var(--yellow);
         animation-delay: -1s;
     }
     .load :nth-child(3) {
-        background: #fda543;
+        background: var(--hover-color);
         animation-delay: -0.5s;
     }
     .load :last-child {
-        background: #193b48;
+        background: var(--text-color-sec);
     }
-    
+
     @keyframes spinner {
-        0%, 100% {
+        0%,
+        100% {
             transform: translate(0);
         }
         25% {
@@ -116,8 +115,6 @@ body {
         }
     }
 }
-
-
 
 // Header Section Start
 
@@ -330,7 +327,7 @@ section {
             margin-top: 8rem;
             display: flex;
             justify-content: space-between;
-            width: 220px;
+            width: 120px;
             height: 40px;
 
             a {
@@ -424,7 +421,7 @@ section {
     .about-content {
         span {
             color: var(--text-color);
-            font-size: 0.8rem;
+            font-size: 1rem;
             font-weight: 200;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -433,6 +430,7 @@ section {
         h2 {
             color: var(--hover-color);
             font-weight: 700;
+            text-transform: uppercase;
             font-size: var(--normal-font);
         }
 
@@ -445,7 +443,8 @@ section {
         p {
             color: var(--text-color);
             font-weight: 300;
-            margin-bottom: 1.5rem;
+            margin: 10px 0;
+            margin-bottom: 1.8rem;
         }
     }
 }
@@ -459,7 +458,9 @@ section {
     color: var(--text-color-sec);
 
     h2 {
+        color: var(--hover-color);
         font-weight: 700;
+        text-transform: uppercase;
         font-size: var(--normal-font);
     }
 
@@ -471,64 +472,74 @@ section {
         text-transform: uppercase;
     }
 }
-
-.section-services {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    grid-gap: 2rem;
-
-    .service-box {
-        flex: 1 1 18rem;
-        padding: 2rem 1rem 2rem;
-        text-align: center;
-        background: var(--secon-bg-color);
-        transition: transform 0.4s;
-        border-radius: 10px;
-    }
+.icon-img {
+    margin: 20px;
+    width: 80px;
 }
 
-.service-btn {
-    width: auto;
-    justify-content: center;
-}
+// .section-services {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-wrap: wrap;
+//     grid-gap: 2rem;
 
-.service-icon {
-    border: 2px solid var(--hover-color);
-    padding: 2rem;
-    background: var(--bg-color);
-    display: flex;
-    align-items: center;
-    font-size: 3rem;
-    border-radius: 50%;
-    position: relative;
-    color: var(--hover-color);
-    box-shadow: var(--neon-box-shadow);
-}
+//     .service-box {
+//         flex: 1 1 18rem;
+//         padding: 2rem 1rem 2rem;
+//         text-align: center;
+//         background: var(--secon-bg-color);
+//         transition: transform 0.4s;
+//         border-radius: 10px;
+//     }
+// }
 
-.service-box {
-    h3 {
-        margin-top: 10px;
-        font-size: 1.5rem;
-    }
+// .service-btn {
+//     width: auto;
+//     justify-content: center;
+// }
 
-    p {
-        margin: 0.5rem 0 1.5rem 0;
-        font-weight: 300;
-        letter-spacing: 1px;
-        color: var(--text-color-sec);
-        line-height: 1.6;
-    }
-    &:hover {
-        transform: translateY(-0.7rem);
-    }
-}
+// .service-icon {
+//     border: 2px solid var(--hover-color);
+//     padding: 2rem;
+//     background: var(--bg-color);
+//     display: flex;
+//     align-items: center;
+//     font-size: 3rem;
+//     border-radius: 50%;
+//     position: relative;
+//     color: var(--hover-color);
+//     box-shadow: var(--neon-box-shadow);
+// }
+
+// .service-box {
+//     h3 {
+//         margin-top: 10px;
+//         font-size: 1.5rem;
+//     }
+
+//     p {
+//         margin: 0.5rem 0 1.5rem 0;
+//         font-weight: 300;
+//         letter-spacing: 1px;
+//         color: var(--text-color-sec);
+//         line-height: 1.6;
+//         position: relative;
+
+//         i {
+//             font-size: 5rem;
+//             margin: 20px;
+//         }
+//     }
+//     &:hover {
+//         transform: translateY(-0.7rem);
+//     }
+// }
 
 // Skills Section Start
 
 .skills {
-    background: var(--secon-bg-color);
+    background: var(--bg-color);
 
     .skill-main {
         width: 100%;
@@ -537,9 +548,11 @@ section {
         grid-row-gap: 30px;
         grid-column-gap: 50px;
 
-        h3 {
-            margin-bottom: 2rem;
-            font-size: var(--normal-font);
+        h3{
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: var(--hover-color);
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -556,7 +569,7 @@ section {
             .bar {
                 width: 100%;
                 height: 10px;
-                background-color: var(--bg-color);
+                background-color: var(--secon-bg-color);
                 border-radius: 25px;
                 margin-top: 10px;
                 position: relative;
@@ -677,6 +690,10 @@ section {
     }
 }
 
+.portfolio {
+    background: var(--secon-bg-color);
+}
+
 .portfolio-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -726,7 +743,7 @@ section {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), #0099ff);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), #292e33);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -735,13 +752,29 @@ section {
     transition: 0.5s;
     padding: 0 2rem;
 
+    .ling {
+        text-align: center;
+        width: 50%;
+        display: flex;
+        margin-top: 20px;
+
+        li {
+            margin-left: 20px;
+            display: flex;
+
+            i {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
     h3 {
         font-size: 1.5rem;
         font-weight: 600;
     }
 
     p {
-        font-size: 0.8rem;
+        font-size: 1rem;
         margin: 5px 0 15px 0;
     }
 
@@ -751,6 +784,7 @@ section {
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
         width: 50px;
         height: 50px;
         border: 1px solid var(--hover-color);
@@ -765,33 +799,6 @@ section {
 
 /// Contact Section Start
 
-.contant {
-    background: var(--secon-bg-color);
-    width: 100%;
-
-    form {
-        text-align: center;
-        max-width: 50rem;
-        margin: 1rem auto;
-        margin-bottom: 3rem;
-
-        input,
-        textarea {
-            width: 100%;
-            color: var(--text-color);
-            background: var(--bg-color);
-            margin-bottom: 0.8rem;
-            border: none;
-            border-radius: 5px;
-            padding: 0.7rem;
-        }
-
-        textarea {
-            resize: none;
-        }
-    }
-}
-
 .formBtn {
     display: flex;
     justify-content: center;
@@ -805,19 +812,13 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    background: var(--bg-color);
 
     p {
         display: inline-flex;
         justify-content: center;
         color: var(--text-color);
-    }
-
-    a {
-        font-size: 1rem;
-        color: var(--secon-bg-color);
-        background: var(--hover-color);
-        padding: 0.6rem;
-        border-radius: 5px;
     }
 }
 
