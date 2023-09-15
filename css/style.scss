@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import "ling";
 $Poppins: "Poppins", sans-serif;
 $lite: #333 !important;
 $size: 48px;
@@ -14,20 +13,36 @@ $size: 48px;
 }
 
 :root {
+    // tema light
     --blue: #001847 !important;
+    --bg-box: #292e33 !important;
     --text-color: #000000 !important;
     --text-color-sec: #2d2d2d !important;
     --hover-color: #3498db !important;
     --yellow: #ffe615 !important;
     --bg-color: #ffffff !important;
     --secon-bg-color: #cfcfcf !important;
+
+    // tema dark
+
+    --text-color-dark: #fff !important;
+    --text-color-sec-dark: #cfcfcf !important;
+    --hover-color-dark: #7800ff !important;
+    --bg-box: #292e33 !important;
+    --bg-color-dark: #272727 !important;
+    --secon-bg-color-dark: #333 !important;
+
     --big-font: 2.5rem;
     --normal-font: 2rem;
     --neon-box-shadow: 0 0 0.5rem #0099ff;
+    --neon-box-shadow-dark: 0 0 0.5rem #8a02f2;
     --h2-font: 3rem;
     --font-neon-text-shadow: 0 0 10px rgba(18, 227, 255, 0.3), 0 0 20px rgba(18, 227, 255, 0.3),
         0 0 30px rgba(18, 227, 255, 0.3), 0 0 40px rgba(18, 227, 255, 0.3), 0 0 70px rgba(18, 227, 255, 0.3),
         0 0 80px rgba(18, 227, 255, 0.3), 0 0 100px rgba(18, 227, 255, 0.3), 0 0 150px rgba(18, 227, 255, 0.3);
+    --font-neon-text-shadow-dark: 0 0 10px rgba(200, 18, 255, 0.3), 0 0 20px rgba(200, 18, 255, 0.3),
+        0 0 30px rgba(200, 18, 255, 0.3), 0 0 40px rgba(200, 18, 255, 0.3), 0 0 70px rgba(200, 18, 255, 0.3),
+        0 0 80px rgba(200, 18, 255, 0.3), 0 0 100px rgba(200, 18, 255, 0.3), 0 0 150px rgba(200, 18, 255, 0.3);
 }
 
 ::-webkit-scrollbar {
@@ -54,6 +69,256 @@ body {
     color: var(--text-color);
     overflow-x: hidden;
     width: 100vw;
+}
+
+body.dark-theme {
+    background: var(--bg-color-dark);
+    color: var(--hover-color-dark);
+
+    &::-webkit-scrollbar-track {
+        background: var(--secon-bg-color-dark);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--hover-color-dark);
+        border-radius: 5rem;
+    }
+
+    // Header Section Start
+
+    header {
+        background: var(--bg-color-dark);
+        color: var(--text-color-dark);
+
+        &.sticky {
+            background: var(--bg-color-dark);
+            border-bottom: 1px solid var(--secon-bg-color-dark);
+        }
+
+        .navlist {
+            a {
+                color: var(--text-color-dark);
+                &:hover {
+                    color: var(--hover-color-dark);
+                    text-shadow: 0 0 10px rgba(200, 18, 255, 0.6), 0 0 20px rgba(200, 18, 255, 0.6),
+                        0 0 30px rgba(200, 18, 255, 0.6), 0 0 40px rgba(200, 18, 255, 0.6),
+                        0 0 70px rgba(200, 18, 255, 0.6), 0 0 80px rgba(200, 18, 255, 0.6),
+                        0 0 100px rgba(200, 18, 255, 0.6), 0 0 150px rgba(200, 18, 255, 0.6);
+                }
+
+                &.active {
+                    color: var(--hover-color-dark);
+                }
+            }
+        }
+    }
+
+    #menu-icons {
+        background: var(--hover-color-dark);
+        color: var(--secon-bg-color-dark);
+    }
+
+    span {
+        color: var(--hover-color-dark);
+    }
+    // Botão Neon
+    .btn-box {
+        display: flex;
+        justify-content: space-between;
+        width: 320px;
+        height: 45px;
+
+        .btn {
+            background: var(--hover-color-dark);
+            color: var(--bg-color-dark);
+            box-shadow: var(--neon-box-shadow-dark);
+
+            &:hover {
+                color: var(--hover-color-dark);
+            }
+
+            &::before {
+                background: var(--bg-color-dark);
+            }
+
+            // Botão lado direito
+            &:nth-child(2) {
+                background: var(--bg-color-dark);
+                color: var(--hover-color-dark);
+
+                &:hover {
+                    color: var(--bg-color-dark);
+                }
+                &::before {
+                    background: var(--hover-color-dark);
+                }
+            }
+        }
+    }
+    // Home Section Start
+    .home {
+        color: var(--text-color-dark);
+
+        .home-content {
+            p {
+                color: var(--text-color-sec-dark);
+            }
+
+            .info-box {
+                h5 {
+                    color: var(--text-color-dark);
+                }
+
+                span {
+                    color: var(--text-color-sec-dark);
+                }
+            }
+
+            .social-icon {
+                a {
+                    background: var(--bg-color-dark);
+                    color: var(--hover-color-dark);
+                    border: 2px solid var(--hover-color-dark);
+                    box-shadow: 0 0 0.3rem var(--neon-box-shadow-dark);
+
+                    &::before {
+                        background: var(--hover-color-dark);
+                    }
+
+                    &:hover {
+                        color: var(--bg-color-dark);
+                    }
+                }
+            }
+        }
+    }
+
+    // About Section Start
+
+    .about {
+        background: var(--secon-bg-color-dark);
+
+        .about-content {
+            span {
+                color: var(--text-color-dark);
+            }
+
+            h2 {
+                color: var(--hover-color-dark);
+            }
+
+            p {
+                color: var(--text-color-dark);
+            }
+        }
+    }
+
+    // Services Section Start
+
+    .main-text {
+        color: var(--text-color-sec-dark);
+
+        h2 {
+            color: var(--hover-color-dark);
+        }
+
+        span {
+            color: var(--text-color-dark);
+        }
+    }
+
+    .skills {
+        .linguagens-gallery {
+            .ling-box {
+                background: var(--bg-box);
+                border: 2px solid var(--hover-color-dark);
+
+                .ling-content {
+                    color: var(--hover-color-dark);
+                    background: var(--bg-color-dark);
+                }
+            }
+        }
+        .skill-main {
+            h3 {
+                color: var(--hover-color-dark);
+            }
+
+            .skill-bar {
+                .bar {
+                    background-color: var(--secon-bg-color-dark);
+
+                    span {
+                        background: var(--hover-color-dark);
+                        box-shadow: var(--neon-box-shadow-dark);
+                    }
+                }
+            }
+
+            .professional {
+                .box {
+                    .circle {
+                        border: 2px solid var(--secon-bg-color-dark);
+
+                        .points {
+                            background: var(--secon-bg-color-dark);
+                        }
+
+                        .points.marked {
+                            animation: glow-dark 0.04s linear forwards;
+                            animation-delay: calc(var(--i) * 0.05s);
+                        }
+                    }
+
+                    .text {
+                        color: var(--text-color-dark);
+                    }
+                }
+            }
+        }
+    }
+
+    // Portfolio Section Start
+
+    .fillter-buttons {
+        .btn {
+            color: var(--text-color-dark);
+
+            &:hover {
+                color: var(--hover-color-dark);
+            }
+        }
+    }
+
+    .portfolio {
+        background: var(--secon-bg-color-dark);
+    }
+
+    .port-box {
+        background: var(--bg-box);
+        border: 2px solid var(--hover-color-dark);
+        box-shadow: var(--neon-box-shadow-dark);
+    }
+    .port-content {
+        color: var(--bg-color);
+        background: linear-gradient(rgba(0, 0, 0, 0.2), var(--bg-box));
+
+        a {
+            background: var(--text-color-sec-dark);
+            border: 1px solid var(--hover-color-dark);
+            outline: 2px solid var(--text-color-sec-dark);
+
+            i {
+                color: var(--secon-bg-color-dark);
+            }
+        }
+    }
+
+    footer {
+        p {
+            color: var(--text-color-dark);
+        }
+    }
 }
 
 // Loading
@@ -116,6 +381,48 @@ body {
     }
 }
 
+form > div {
+    margin: 40px 0;
+}
+
+/*Start  Styling Toggle-Switch*/
+.toggle-switch input {
+    opacity: 0;
+}
+
+.toggle-switch label {
+    width: 60px;
+    height: 30px;
+    background: var(--secon-bg-color);
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+}
+
+.toggle-switch label:after {
+    content: "";
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: left 0.4s ease-out;
+}
+
+.toggle-switch input[id="theme-toggle"]:checked + label:after {
+    left: 31px;
+    background: var(--bg-color-dark);
+    transition: left 0.6s ease-out;
+}
+
+.toggle-switch input[id="theme-toggle"]:checked + label {
+    background: var(--hover-color-dark);
+}
+/*End  Styling Toggle-Switch*/
+
 // Header Section Start
 
 header {
@@ -129,7 +436,6 @@ header {
     justify-content: space-between;
     width: 100%;
     padding: 20px 10%;
-    background: var(--bg-color);
 
     .logo {
         font-size: 26px;
@@ -320,6 +626,10 @@ section {
             span {
                 font-size: 0.9rem;
                 color: var(--text-color-sec);
+
+                a{
+                color: var(--text-color-sec);
+                }
             }
         }
 
@@ -540,8 +850,71 @@ section {
 // Skills Section Start
 
 .skills {
-    background: var(--bg-color);
+    .linguagens-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+        gap: 2rem;
 
+        .ling-box {
+            border-radius: 15px;
+            overflow: hidden;
+            background: #292e33;
+            display: flex;
+            grid-template-rows: 1fr auto;
+            align-items: center;
+            border: 2px solid var(--hover-color);
+            position: relative;
+            height: 120px;
+
+            .ling-content {
+                position: absolute;
+                bottom: 0;
+                color: var(--hover-color);
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--bg-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                text-align: center;
+                transition: 0.5s;
+                padding: 0 2rem;
+
+                h4 {
+                    position: absolute;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    left: 20px;
+                    top: 20px;
+                    text-transform: uppercase;
+                }
+
+                i {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 3rem;
+                    position: absolute;
+                    right: 20px;
+                    top: 20px;
+                }
+            }
+
+            .exp {
+                position: absolute;
+                bottom: 10px;
+                left: 20px;
+                text-align: left;
+
+                p {
+                    font-size: 0.9rem;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
     .skill-main {
         width: 100%;
         display: grid;
@@ -627,12 +1000,12 @@ section {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border: 2px solid #fff;
+                    border: 2px solid var(--secon-bg-color);
 
                     .points {
                         width: 2px;
                         height: 10px;
-                        background-color: var(--bg-color);
+                        background-color: var(--secon-bg-color);
                         position: absolute;
                         border-radius: 3px;
                         transform: rotate(calc(var(--i) * var(--rot))) translateY(-45px);
@@ -704,7 +1077,7 @@ section {
 .port-box {
     border-radius: 15px;
     overflow: hidden;
-    background: #292e33;
+    background: var(--bg-box);
     display: flex;
     grid-template-rows: 1fr auto;
     align-items: center;
@@ -744,7 +1117,7 @@ section {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), #292e33);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), var(--bg-box));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -775,7 +1148,7 @@ section {
     }
 
     p {
-        font-size: .9rem;
+        font-size: 0.9rem;
         margin: 5px 0 15px 0;
     }
 
@@ -814,7 +1187,6 @@ footer {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: var(--bg-color);
 
     p {
         display: inline-flex;
@@ -901,6 +1273,18 @@ footer {
     }
 }
 
+@keyframes glow-dark {
+    0% {
+        background: var(--bg-color-dark);
+        box-shadow: none;
+    }
+
+    100% {
+        background: var(--hover-color-dark);
+        box-shadow: var(--neon-box-shadow-dark);
+    }
+}
+
 @media (max-width: 991px) {
     :root {
         --big-font: 2.2rem;
@@ -937,8 +1321,8 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .port-content p{
-        font-size: .7rem;
+    .port-content p {
+        font-size: 0.7rem;
     }
     .port-content .ling {
         text-align: center;

@@ -1,9 +1,9 @@
 let words = document.querySelectorAll(".word");
 
-words.forEach((word)=>{
+words.forEach((word) => {
     let letters = word.textContent.split("");
-    word.textContent="";
-    letters.forEach((letter)=>{
+    word.textContent = "";
+    letters.forEach((letter) => {
         let span = document.createElement("span");
         span.textContent = letter;
         span.className = "letter";
@@ -12,49 +12,49 @@ words.forEach((word)=>{
 });
 
 let currentWordIndex = 0;
-let maxWordIndex = words.length -1;
+let maxWordIndex = words.length - 1;
 words[currentWordIndex].style.opacity = "1";
 
-let changeText = ()=>{
+let changeText = () => {
     let currentWord = words[currentWordIndex];
     let netWord = currentWordIndex === maxWordIndex ? words[0] : words[currentWordIndex + 1];
 
-    Array.from(currentWord.children).forEach((letter,i)=>{
+    Array.from(currentWord.children).forEach((letter, i) => {
         setTimeout(() => {
             letter.className = "letter out";
-        },i *80);
+        }, i * 80);
     });
-    netWord.style.opacity="1";
-    Array.from(netWord.children).forEach((letter,i)=>{
+    netWord.style.opacity = "1";
+    Array.from(netWord.children).forEach((letter, i) => {
         letter.className = "letter behind";
-        setTimeout(()=>{
+        setTimeout(() => {
             letter.className = "letter in";
-            },340 + i*80);
-        });
+        }, 340 + i * 80);
+    });
     currentWordIndex = currentWordIndex === maxWordIndex ? 0 : currentWordIndex + 1;
 };
 
 changeText();
-setInterval(changeText ,3000);
+setInterval(changeText, 3000);
 
 
 // ////////////Circle
 
-const circle=document.querySelectorAll('.circle');
-circle.forEach(elem=>{
+const circle = document.querySelectorAll('.circle');
+circle.forEach(elem => {
     var dots = elem.getAttribute("data-dots");
     var marked = elem.getAttribute("data-percent");
-    var percent = Math.floor(dots*marked/100);
+    var percent = Math.floor(dots * marked / 100);
     var points = "";
     var rotate = 360 / dots;
-    
-    for(let i = 0 ; i < dots ; i++){
+
+    for (let i = 0; i < dots; i++) {
         points += `<div class="points" style="--i:${i}; --rot:${rotate}deg"></div>`;
     }
     elem.innerHTML = points;
 
     const pointsMarked = elem.querySelectorAll('.points');
-    for(let i = 0; i<percent ; i++){
+    for (let i = 0; i < percent; i++) {
         pointsMarked[i].classList.add('marked')
     }
 })
@@ -67,19 +67,19 @@ const sections = document.querySelectorAll('section');
 
 // Função para verificar qual seção está visível e atualizar o menu
 function updateActiveMenu() {
-  const scrollY = window.scrollY;
+    const scrollY = window.scrollY;
 
-  // Iterar pelas seções para encontrar a seção visível atual
-  sections.forEach((section, index) => {
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.clientHeight;
+    // Iterar pelas seções para encontrar a seção visível atual
+    sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.clientHeight;
 
-    if (scrollY >= sectionTop - 97 && scrollY < sectionBottom) {
-      // Remova a classe 'active' de todos os itens do menu e adicione à seção atual
-      menuLinks.forEach(item => item.classList.remove('active'));
-      menuLinks[index].classList.add('active');
-    }
-  });
+        if (scrollY >= sectionTop - 97 && scrollY < sectionBottom) {
+            // Remova a classe 'active' de todos os itens do menu e adicione à seção atual
+            menuLinks.forEach(item => item.classList.remove('active'));
+            menuLinks[index].classList.add('active');
+        }
+    });
 }
 
 // Chame a função para definir o estado inicial do menu
@@ -92,8 +92,8 @@ window.addEventListener('scroll', updateActiveMenu);
 // sticky navbar
 
 const header = document.querySelector("header");
-window.addEventListener("scroll",function(){
-    header.classList.toggle("sticky",this.window.scrollY > 50)
+window.addEventListener("scroll", function () {
+    header.classList.toggle("sticky", this.window.scrollY > 50)
 })
 
 
@@ -160,5 +160,38 @@ const elementsToObserve = document.querySelectorAll(".scroll-scale, .scroll-bott
 elementsToObserve.forEach((element) => {
     observer.observe(element);
 });
+
+// Alterar tema remove/add a classe dark
+document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    themeToggle.addEventListener("click", function () {
+        // Alterne a classe "dark-theme" no corpo
+        body.classList.toggle("dark-theme");
+    });
+});
+
+// Altera as img para o tema dark
+
+document.addEventListener("DOMContentLoaded", function () {
+    const botaoTrocarImagem = document.getElementById("theme-toggle");
+    const imagensVisiveis = document.querySelectorAll("#imagemVisivel");
+    const imagensOcultas = document.querySelectorAll("#imagemOculta");
+
+    botaoTrocarImagem.addEventListener("click", function () {
+        // Itera por todas as imagens visíveis e alterna a visibilidade delas
+        imagensVisiveis.forEach(function (imagemVisivel, index) {
+            if (imagemVisivel.style.display === "block" || imagemVisivel.style.display === "") {
+                imagemVisivel.style.display = "none";
+                imagensOcultas[index].style.display = "block";
+            } else {
+                imagemVisivel.style.display = "block";
+                imagensOcultas[index].style.display = "none";
+            }
+        });
+    });
+});
+
 
 
